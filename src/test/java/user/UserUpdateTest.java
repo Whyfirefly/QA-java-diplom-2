@@ -32,7 +32,7 @@ public class UserUpdateTest {
   public void tearDown() {
     if (accessToken != null) {
       response = UserStepsApi.deleteUser(StringUtils.substringAfter(accessToken, " "));
-      userStepsChecks.CheckUserDeleteByValidCredentials(response);
+      userStepsChecks.checkUserDeleteByValidCredentials(response);
     }
   }
 
@@ -43,7 +43,7 @@ public class UserUpdateTest {
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.loginUser(user, accessToken);
     response = UserStepsApi.updateUserByAuthorization(UserGeneratorData.getRandomUser(), accessToken);
-    userStepsChecks.CheckUpdateUserByAuthorization(response);
+    userStepsChecks.checkUpdateUserByAuthorization(response);
   }
 
   @Test
@@ -52,6 +52,6 @@ public class UserUpdateTest {
     response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.updateUserWithoutAuthorization(UserGeneratorData.getRandomUser());
-    userStepsChecks.CheckUpdateUserWithoutAuthorization(response);
+    userStepsChecks.checkUpdateUserWithoutAuthorization(response);
   }
 }

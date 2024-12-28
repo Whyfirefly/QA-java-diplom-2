@@ -34,7 +34,7 @@ public class UserGetTest {
   public void tearDown() {
     if (accessToken != null) {
       response = UserStepsApi.deleteUser(StringUtils.substringAfter(accessToken, " "));
-      userStepsChecks.CheckUserDeleteByValidCredentials(response);
+      userStepsChecks.checkUserDeleteByValidCredentials(response);
     }
   }
 
@@ -44,7 +44,7 @@ public class UserGetTest {
     response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.getUser(accessToken);
-    userStepsChecks.CheckUserGetByValidCredentials(response);
+    userStepsChecks.checkUserGetByValidCredentials(response);
     String email = response.extract().path("user.email");
     String name = response.extract().path("user.name");
 

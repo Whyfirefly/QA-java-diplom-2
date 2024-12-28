@@ -15,14 +15,14 @@ import static org.hamcrest.Matchers.notNullValue;
 public class UserStepsChecks {
 
   @Step("Check status code 200 and body response - success:true when we create user by valid credentials")
-  public void CheckUserCreateByValidCredentialsSuccessful(ValidatableResponse response) {
+  public void checkUserCreateByValidCredentialsSuccessful(ValidatableResponse response) {
     response
             .statusCode(SC_OK)
             .and().assertThat().body("success", CoreMatchers.equalTo(true));
   }
 
   @Step("Check status code 403 and body response - success:false when we create user with empty email/password/name")
-  public void CheckUserCreateWithEmptyField(ValidatableResponse response) {
+  public void checkUserCreateWithEmptyField(ValidatableResponse response) {
     response
             .statusCode(SC_FORBIDDEN)
             .and().assertThat().body("success", CoreMatchers.equalTo(false))
@@ -30,7 +30,7 @@ public class UserStepsChecks {
   }
 
   @Step("Check status code 403 and body response - success:false when we repeat request by create user")
-  public void CheckRepeatedRequestByCreateUser(ValidatableResponse response) {
+  public void checkRepeatedRequestByCreateUser(ValidatableResponse response) {
     response
             .statusCode(SC_FORBIDDEN)
             .and().assertThat().body("success", CoreMatchers.equalTo(false))
@@ -38,7 +38,7 @@ public class UserStepsChecks {
   }
 
   @Step("Check status code 202 and body response - success:true when we delete user")
-  public void CheckUserDeleteByValidCredentials(ValidatableResponse response) {
+  public void checkUserDeleteByValidCredentials(ValidatableResponse response) {
     response
             .statusCode(SC_ACCEPTED)
             .and().assertThat().body("success", CoreMatchers.equalTo(true))
@@ -46,7 +46,7 @@ public class UserStepsChecks {
   }
 
   @Step("Check status code 200 and body response - success:true when get user")
-  public void CheckUserGetByValidCredentials(ValidatableResponse response) {
+  public void checkUserGetByValidCredentials(ValidatableResponse response) {
     response
             .statusCode(SC_OK)
             .and().assertThat().body("success", CoreMatchers.equalTo(true));
@@ -54,7 +54,7 @@ public class UserStepsChecks {
 
   @Step("Check status code 200 and body response - success:true when user login ")
   @DisplayName("User login by valid credentials")
-  public void CheckUserLoginByValidCredentialsSuccess(ValidatableResponse response) {
+  public void checkUserLoginByValidCredentialsSuccess(ValidatableResponse response) {
     response
             .statusCode(SC_OK)
             .and().assertThat().body("success", CoreMatchers.equalTo(true))
@@ -62,7 +62,7 @@ public class UserStepsChecks {
   }
 
   @Step("Check status code 200 and body response - success:true when user logout ")
-  public void CheckUserLogoutByValidCredentials(ValidatableResponse response) {
+  public void checkUserLogoutByValidCredentials(ValidatableResponse response) {
     response
             .statusCode(SC_OK)
             .and().assertThat().body("success", CoreMatchers.equalTo(true))
@@ -70,7 +70,7 @@ public class UserStepsChecks {
   }
 
   @Step("Check status code 401 and body response - success:false when user login without email or password ")
-  public void CheckUserLoginWithEmptyEmailOrPass(ValidatableResponse response) {
+  public void checkUserLoginWithEmptyEmailOrPass(ValidatableResponse response) {
     response
             .statusCode(SC_UNAUTHORIZED)
             .and().assertThat().body("success", CoreMatchers.equalTo(false))
@@ -78,14 +78,14 @@ public class UserStepsChecks {
   }
 
   @Step("Check status code 200 and body response - success:true when we update user by authorization")
-  public void CheckUpdateUserByAuthorization(ValidatableResponse response) {
+  public void checkUpdateUserByAuthorization(ValidatableResponse response) {
     response
             .statusCode(SC_OK)
             .and().assertThat().body("success", CoreMatchers.equalTo(true));
   }
 
   @Step("Check status code 401 and body response - success:false when we update user without authorization")
-  public void CheckUpdateUserWithoutAuthorization(ValidatableResponse response) {
+  public void checkUpdateUserWithoutAuthorization(ValidatableResponse response) {
     response
             .statusCode(SC_UNAUTHORIZED)
             .and().assertThat().body("success", CoreMatchers.equalTo(false))

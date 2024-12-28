@@ -49,7 +49,7 @@ public class OrderGetTest {
   public void tearDown() {
     if (accessToken != null) {
       response = UserStepsApi.deleteUser(StringUtils.substringAfter(accessToken, " "));
-      userStepsChecks.CheckUserDeleteByValidCredentials(response);
+      userStepsChecks.checkUserDeleteByValidCredentials(response);
     }
   }
 

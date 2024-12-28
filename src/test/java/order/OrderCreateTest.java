@@ -46,7 +46,7 @@ public class OrderCreateTest {
   public void tearDown() {
     if (accessToken != null) {
       response = UserStepsApi.deleteUser(StringUtils.substringAfter(accessToken, " "));
-      userStepsChecks.CheckUserDeleteByValidCredentials(response);
+      userStepsChecks.checkUserDeleteByValidCredentials(response);
     }
   }
 
@@ -93,7 +93,7 @@ public class OrderCreateTest {
     Ingredients ingredients = orderStepsApi.getAllIngredientsAsList();
     orderStepsApi.addIngredientToTheListWithWrongHash(ingredients,ingredient);
     response = OrderStepsApi.createOrderWithoutAuthorization(order);
-    orderStepsChecks.CheckOrderCreateWithWrongHashIngredient(response);
+    orderStepsChecks.checkOrderCreateWithWrongHashIngredient(response);
   }
 
   @Test
@@ -104,7 +104,7 @@ public class OrderCreateTest {
     response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = OrderStepsApi.createOrderByAuthorization(order, accessToken);
-    orderStepsChecks.CheckOrderCreateWithWrongHashIngredient(response);
+    orderStepsChecks.checkOrderCreateWithWrongHashIngredient(response);
   }
 
 }

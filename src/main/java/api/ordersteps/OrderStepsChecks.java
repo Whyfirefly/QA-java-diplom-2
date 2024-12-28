@@ -38,7 +38,7 @@ public class OrderStepsChecks {
 
 
   @Step("Check status code 500 when we create order without authorization and change hash ingredient")
-  public void CheckOrderCreateWithWrongHashIngredient(ValidatableResponse response) {
+  public void checkOrderCreateWithWrongHashIngredient(ValidatableResponse response) {
     response
             .statusCode(SC_INTERNAL_SERVER_ERROR);
   }

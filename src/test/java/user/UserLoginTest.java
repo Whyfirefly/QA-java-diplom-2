@@ -31,18 +31,28 @@ public class UserLoginTest {
   public void tearDown() {
     if (accessToken != null) {
       response = UserStepsApi.deleteUser(StringUtils.substringAfter(accessToken, " "));
-      userStepsChecks.CheckUserDeleteByValidCredentials(response);
+      userStepsChecks.checkUserDeleteByValidCredentials(response);
     }
   }
 
   @Test
-  @DisplayName("User login by valid credentials")
-  public void userLoginByValidCredentials() {
+  @DisplayName("Get user login by valid credentials")
+  public void getUserLoginByValidCredentials() {
     response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.loginUser(user, accessToken);
-    userStepsChecks.CheckUserGetByValidCredentials(response);
+    userStepsChecks.checkUserGetByValidCredentials(response);
   }
+
+  @Test
+  @DisplayName("Check user login by valid credentials")
+  public void checkUserLoginByValidCredentials() {
+    response = UserStepsApi.createUser(user);
+    accessToken = response.extract().path("accessToken");
+    response = UserStepsApi.loginUser(user, accessToken);
+    userStepsChecks.checkUserLoginByValidCredentialsSuccess(response);
+  }
+
 
   @Test
   @DisplayName("User login with empty email")
@@ -51,7 +61,7 @@ public class UserLoginTest {
     accessToken = response.extract().path("accessToken");
     user.setEmail(null);
     response = UserStepsApi.loginUser(user, accessToken);
-    userStepsChecks.CheckUserLoginWithEmptyEmailOrPass(response);
+    userStepsChecks.checkUserLoginWithEmptyEmailOrPass(response);
   }
 
   @Test
@@ -61,7 +71,7 @@ public class UserLoginTest {
     accessToken = response.extract().path("accessToken");
     user.setPassword(null);
     response = UserStepsApi.loginUser(user, accessToken);
-    userStepsChecks.CheckUserLoginWithEmptyEmailOrPass(response);
+    userStepsChecks.checkUserLoginWithEmptyEmailOrPass(response);
 
   }
 }

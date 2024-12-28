@@ -32,7 +32,7 @@ public class UserLogoutTest {
   public void tearDown() {
     if (accessToken != null) {
       response = UserStepsApi.deleteUser(StringUtils.substringAfter(accessToken, " "));
-      userStepsChecks.CheckUserDeleteByValidCredentials(response);
+      userStepsChecks.checkUserDeleteByValidCredentials(response);
     }
   }
 
@@ -45,7 +45,7 @@ public class UserLogoutTest {
     String refreshToken = response.extract().path("refreshToken");
     refreshToken = "{\"token\":\"" + refreshToken + "\"}";
     response = UserStepsApi.logoutUser(refreshToken);
-    userStepsChecks.CheckUserLogoutByValidCredentials(response);
+    userStepsChecks.checkUserLogoutByValidCredentials(response);
   }
 }
 

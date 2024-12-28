@@ -31,7 +31,7 @@ public class UserCreateTest {
   public void tearDown() {
     if (accessToken != null) {
       response = UserStepsApi.deleteUser(StringUtils.substringAfter(accessToken, " "));
-      userStepsChecks.CheckUserDeleteByValidCredentials(response);
+      userStepsChecks.checkUserDeleteByValidCredentials(response);
     }
   }
 
@@ -39,7 +39,7 @@ public class UserCreateTest {
   @DisplayName("User create by valid credentials")
   public void userCreateByValidCredentials() {
     response = UserStepsApi.createUser(user);
-    userStepsChecks.CheckUserCreateByValidCredentialsSuccessful(response);
+    userStepsChecks.checkUserCreateByValidCredentialsSuccessful(response);
     accessToken = response.extract().path("accessToken");
   }
 
@@ -48,7 +48,7 @@ public class UserCreateTest {
   public void userCreateIsEmptyEmail() {
     user.setEmail(null);
     response = UserStepsApi.createUser(user);
-    userStepsChecks.CheckUserCreateWithEmptyField(response);
+    userStepsChecks.checkUserCreateWithEmptyField(response);
   }
 
   @Test
@@ -56,7 +56,7 @@ public class UserCreateTest {
   public void userCreateIsEmptyPassword() {
     user.setPassword(null);
     response = UserStepsApi.createUser(user);
-    userStepsChecks.CheckUserCreateWithEmptyField(response);
+    userStepsChecks.checkUserCreateWithEmptyField(response);
   }
 
   @Test
@@ -64,7 +64,7 @@ public class UserCreateTest {
   public void userCreateIsEmptyName() {
     user.setName(null);
     response = UserStepsApi.createUser(user);
-    userStepsChecks.CheckUserCreateWithEmptyField(response);
+    userStepsChecks.checkUserCreateWithEmptyField(response);
   }
 
   @Test
@@ -72,6 +72,6 @@ public class UserCreateTest {
   public void repeatedRequestByCreateUser() {
     UserStepsApi.createUser(user);
     response = UserStepsApi.createUser(user);
-    userStepsChecks.CheckRepeatedRequestByCreateUser(response);
+    userStepsChecks.checkRepeatedRequestByCreateUser(response);
   }
 }

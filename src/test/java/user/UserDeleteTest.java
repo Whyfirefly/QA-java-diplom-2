@@ -31,7 +31,7 @@ public class UserDeleteTest {
     response = UserStepsApi.createUser(user);
     String accessToken = response.extract().path("accessToken");
     response = UserStepsApi.deleteUser(StringUtils.substringAfter(accessToken, " "));
-    userStepsChecks.CheckUserDeleteByValidCredentials(response);
+    userStepsChecks.checkUserDeleteByValidCredentials(response);
 
   }
 }
