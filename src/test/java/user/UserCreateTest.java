@@ -40,7 +40,6 @@ public class UserCreateTest {
   public void userCreateByValidCredentials() {
     response = UserStepsApi.createUser(user);
     userStepsChecks.checkUserCreateByValidCredentialsSuccessful(response);
-    accessToken = response.extract().path("accessToken");
   }
 
   @Test
@@ -49,6 +48,7 @@ public class UserCreateTest {
     user.setEmail(null);
     response = UserStepsApi.createUser(user);
     userStepsChecks.checkUserCreateWithEmptyField(response);
+    accessToken = response.extract().path("accessToken");
   }
 
   @Test
@@ -73,5 +73,6 @@ public class UserCreateTest {
     UserStepsApi.createUser(user);
     response = UserStepsApi.createUser(user);
     userStepsChecks.checkRepeatedRequestByCreateUser(response);
+    accessToken = response.extract().path("accessToken");
   }
 }
