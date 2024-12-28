@@ -28,6 +28,7 @@ public class UserGetTest {
     user = UserGeneratorData.getRandomUser();
     userStepsApi = new UserStepsApi();
     userStepsChecks = new UserStepsChecks();
+    response = UserStepsApi.createUser(user);
   }
 
   @After
@@ -41,7 +42,6 @@ public class UserGetTest {
   @Test
   @DisplayName("Get user by valid credentials")
   public void userGetByValidCredentials() {
-    response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.getUser(accessToken);
     userStepsChecks.checkUserGetByValidCredentials(response);

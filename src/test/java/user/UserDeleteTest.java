@@ -23,12 +23,12 @@ public class UserDeleteTest {
     user = UserGeneratorData.getRandomUser();
     userStepsApi = new UserStepsApi();
     userStepsChecks = new UserStepsChecks();
+    response = UserStepsApi.createUser(user);
   }
 
   @Test
   @DisplayName("User delete by valid credentials")
   public void userDeleteByValidCredentials() {
-    response = UserStepsApi.createUser(user);
     String accessToken = response.extract().path("accessToken");
     response = UserStepsApi.deleteUser(StringUtils.substringAfter(accessToken, " "));
     userStepsChecks.checkUserDeleteByValidCredentials(response);

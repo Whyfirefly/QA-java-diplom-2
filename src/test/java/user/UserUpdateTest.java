@@ -26,6 +26,7 @@ public class UserUpdateTest {
     user = UserGeneratorData.getRandomUser();
     userStepsApi = new UserStepsApi();
     userStepsChecks = new UserStepsChecks();
+    response = UserStepsApi.createUser(user);
   }
 
   @After
@@ -39,7 +40,6 @@ public class UserUpdateTest {
   @Test
   @DisplayName("Update user by authorization")
   public void updateUserByAuthorization() {
-    response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.loginUser(user, accessToken);
     response = UserStepsApi.updateUserByAuthorization(UserGeneratorData.getRandomUser(), accessToken);
@@ -49,7 +49,6 @@ public class UserUpdateTest {
   @Test
   @DisplayName("Update user without authorization")
   public void updateUserWithoutAuthorization() {
-    response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.updateUserWithoutAuthorization(UserGeneratorData.getRandomUser());
     userStepsChecks.checkUpdateUserWithoutAuthorization(response);

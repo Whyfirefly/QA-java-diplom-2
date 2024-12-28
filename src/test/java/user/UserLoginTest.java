@@ -25,6 +25,7 @@ public class UserLoginTest {
     user = UserGeneratorData.getRandomUser();
     userStepsApi = new UserStepsApi();
     userStepsChecks = new UserStepsChecks();
+    response = UserStepsApi.createUser(user);
   }
 
   @After
@@ -38,7 +39,6 @@ public class UserLoginTest {
   @Test
   @DisplayName("Get user login by valid credentials")
   public void getUserLoginByValidCredentials() {
-    response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.loginUser(user, accessToken);
     userStepsChecks.checkUserGetByValidCredentials(response);
@@ -47,7 +47,6 @@ public class UserLoginTest {
   @Test
   @DisplayName("Check user login by valid credentials")
   public void checkUserLoginByValidCredentials() {
-    response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.loginUser(user, accessToken);
     userStepsChecks.checkUserLoginByValidCredentialsSuccess(response);
@@ -57,7 +56,6 @@ public class UserLoginTest {
   @Test
   @DisplayName("User login with empty email")
   public void userLoginByEmptyEmail() {
-    response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     user.setEmail(null);
     response = UserStepsApi.loginUser(user, accessToken);
@@ -67,7 +65,6 @@ public class UserLoginTest {
   @Test
   @DisplayName("User login with empty password")
   public void userLoginByEmptyPassword() {
-    response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     user.setPassword(null);
     response = UserStepsApi.loginUser(user, accessToken);

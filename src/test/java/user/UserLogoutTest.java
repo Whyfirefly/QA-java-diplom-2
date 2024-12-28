@@ -26,6 +26,7 @@ public class UserLogoutTest {
     user = UserGeneratorData.getRandomUser();
     userStepsApi = new UserStepsApi();
     userStepsChecks = new UserStepsChecks();
+    response = UserStepsApi.createUser(user);
   }
 
   @After
@@ -39,7 +40,6 @@ public class UserLogoutTest {
   @Test
   @DisplayName("User logout by valid credentials")
   public void userLogoutByValidCredentials() {
-    response = UserStepsApi.createUser(user);
     accessToken = response.extract().path("accessToken");
     response = UserStepsApi.loginUser(user, accessToken);
     String refreshToken = response.extract().path("refreshToken");
