@@ -1,4 +1,4 @@
-package random_data;
+package randomdata;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

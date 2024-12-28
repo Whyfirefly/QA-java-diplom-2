@@ -1,4 +1,4 @@
-package api.user_steps;
+package api.usersteps;
 
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;

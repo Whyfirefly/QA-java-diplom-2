@@ -1,4 +1,4 @@
-package random_data;
+package randomdata;
 
 import io.qameta.allure.Allure;
 import org.apache.commons.lang3.RandomStringUtils;

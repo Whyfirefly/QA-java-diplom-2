@@ -1,7 +1,7 @@
 package user;
 
-import api.user_steps.UserStepsApi;
-import api.user_steps.UserStepsChecks;
+import api.usersteps.UserStepsApi;
+import api.usersteps.UserStepsChecks;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pojo.User;
-import random_data.UserGeneratorData;
+import randomdata.UserGeneratorData;
 
 public class UserCreateTest {
   public static String RANDOM_EMAIL = RandomStringUtils.randomAlphabetic(4);

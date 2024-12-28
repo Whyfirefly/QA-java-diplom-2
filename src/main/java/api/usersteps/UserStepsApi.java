@@ -1,4 +1,4 @@
-package api.user_steps;
+package api.usersteps;
 
 import api.RestApi;
 import constants.EndPoints;

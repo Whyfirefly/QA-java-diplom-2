@@ -1,9 +1,9 @@
 package order;
 
-import api.order_steps.OrderStepsApi;
-import api.order_steps.OrderStepsChecks;
-import api.user_steps.UserStepsApi;
-import api.user_steps.UserStepsChecks;
+import api.ordersteps.OrderStepsApi;
+import api.ordersteps.OrderStepsChecks;
+import api.usersteps.UserStepsApi;
+import api.usersteps.UserStepsChecks;
 import io.qameta.allure.Epic;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
@@ -14,7 +14,7 @@ import org.junit.Test;
 import pojo.Ingredients;
 import pojo.Order;
 import pojo.User;
-import random_data.UserGeneratorData;
+import randomdata.UserGeneratorData;
 
 import java.util.ArrayList;
 import java.util.List;

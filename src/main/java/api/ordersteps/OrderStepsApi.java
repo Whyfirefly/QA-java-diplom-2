@@ -1,4 +1,4 @@
-package api.order_steps;
+package api.ordersteps;
 
 import api.RestApi;
 import constants.EndPoints;
@@ -10,7 +10,7 @@ import pojo.Order;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static random_data.RandomData.RANDOM_HASH;
+import static randomdata.RandomData.RANDOM_HASH;
 
 public class OrderStepsApi extends RestApi {
 
